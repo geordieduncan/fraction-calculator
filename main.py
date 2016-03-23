@@ -1,6 +1,5 @@
 class Fraction:
     def __init__(self, num, den):
-
         self.num = num
         self.den = den
 
@@ -12,11 +11,20 @@ class Fraction:
         self.den = self.den * a.den
         return self.simplify(self.num, self.den)
 
-    def return_num(self):
-        return self.num
+    def __sub__(self, a):
+        self.num = self.num * a.den - self.den * a.num
+        self.den = self.den * a.den
+        return self.simplify(self.num, self.den)
 
-    def return_den(self):
-        return self.den
+    def __mul__(self, a):
+        self.num = self.num * a.num
+        self.den = self.den * a.den
+        return self.simplify(self.num, self.den)
+
+    def __div__(self, a):
+        self.num = self.num * a.den
+        self.den = self.den * a.num
+        return self.simplify(self.num, self.den)
 
     def simplify(self, num, den):
         self.num = num
@@ -30,9 +38,3 @@ class Fraction:
                     i = 1
             i += 1
         return str(self.num) + '/' + str(self.den)
-
-
-fractionA = Fraction(3, 5)
-fractionB = Fraction(4, 5)
-
-print fractionA + fractionB
