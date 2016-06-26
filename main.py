@@ -42,7 +42,7 @@ class Fraction:
     def __pow__(self, power):
         newnum = self.num**power
         newden = self.den**power
-        simplify(newnum, newden)
+        return simplify(newnum, newden)
     
     def decimal(self, accuracy):
         return round(float(self.num)/float(self.den), accuracy)
