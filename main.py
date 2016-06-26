@@ -38,3 +38,19 @@ class Fraction:
                     i = 1
             i += 1
         return str(self.num) + '/' + str(self.den)
+        
+    def __pow__(self, power):
+        newnum = self.num**power
+        newden = self.den**power
+        i = 2
+        while i <= newden:
+            if newnum%i == 0:
+                if newden%i ==0:
+                    newnum = newnum/i
+                    newden = newden/i
+                    i = 1
+            i+=1
+        return dectofrac(newnum,2)/dectofrac(newden,2)
+    
+    def decimal(self):
+        return round(float(fraction.num)/float(fraction.den),accuracy)
